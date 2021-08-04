@@ -10,16 +10,23 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:whishlist/home/home.dart';
 import 'package:whishlist/l10n/l10n.dart';
 
+import 'constants.dart';
+
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Whishlist',
       theme: ThemeData(
-        accentColor: const Color(0xFF2094AD),
-        appBarTheme: const AppBarTheme(color: Color(0xFF2094AD)),
-        primaryColor: const Color(0xFF2094AD),
+        accentColor: primaryColor,
+        appBarTheme: const AppBarTheme(
+          color: Colors.transparent,
+          elevation: 0,
+        ),
+        primaryColor: primaryColor,
+        fontFamily: 'Montserrat',
       ),
       localizationsDelegates: const [
         AppLocalizations.delegate,
