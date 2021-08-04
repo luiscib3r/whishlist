@@ -9,6 +9,7 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
+import 'app/data/models/project.dart';
 import 'app/data/models/task.dart';
 
 export 'package:objectbox/objectbox.dart'; // so that callers only have to import this file
@@ -17,7 +18,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(1, 8122000722164806290),
       name: 'Task',
-      lastPropertyId: const IdUid(8, 5700434660808068298),
+      lastPropertyId: const IdUid(9, 4473345292416338009),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -59,10 +60,38 @@ final _entities = <ModelEntity>[
             id: const IdUid(8, 5700434660808068298),
             name: 'type',
             type: 6,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(9, 4473345292416338009),
+            name: 'projectId',
+            type: 11,
+            flags: 520,
+            indexId: const IdUid(1, 3346496873267287634),
+            relationTarget: 'Project')
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[]),
+  ModelEntity(
+      id: const IdUid(2, 102663117268311083),
+      name: 'Project',
+      lastPropertyId: const IdUid(2, 8380855019254401526),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 3868105799478886975),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 8380855019254401526),
+            name: 'name',
+            type: 9,
             flags: 0)
       ],
       relations: <ModelRelation>[],
-      backlinks: <ModelBacklink>[])
+      backlinks: <ModelBacklink>[
+        ModelBacklink(name: 'tasks', srcEntity: 'Task', srcField: '')
+      ])
 ];
 
 /// Open an ObjectBox store with the model declared in this file.
@@ -85,8 +114,8 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(1, 8122000722164806290),
-      lastIndexId: const IdUid(0, 0),
+      lastEntityId: const IdUid(2, 102663117268311083),
+      lastIndexId: const IdUid(1, 3346496873267287634),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
       retiredEntityUids: const [],
@@ -100,7 +129,7 @@ ModelDefinition getObjectBoxModel() {
   final bindings = <Type, EntityDefinition>{
     Task: EntityDefinition<Task>(
         model: _entities[0],
-        toOneRelations: (Task object) => [],
+        toOneRelations: (Task object) => [object.project],
         toManyRelations: (Task object) => {},
         getId: (Task object) => object.id,
         setId: (Task object, int id) {
@@ -111,7 +140,7 @@ ModelDefinition getObjectBoxModel() {
           final descriptionOffset = fbb.writeString(object.description);
           final resolverOffset = fbb.writeString(object.resolver);
           final authorOffset = fbb.writeString(object.author);
-          fbb.startTable(9);
+          fbb.startTable(10);
           fbb.addInt64(0, object.id);
           fbb.addOffset(1, titleOffset);
           fbb.addOffset(2, descriptionOffset);
@@ -120,6 +149,7 @@ ModelDefinition getObjectBoxModel() {
           fbb.addOffset(5, authorOffset);
           fbb.addInt64(6, object.state);
           fbb.addInt64(7, object.type);
+          fbb.addInt64(8, object.project.targetId);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -142,7 +172,45 @@ ModelDefinition getObjectBoxModel() {
                   const fb.StringReader().vTableGet(buffer, rootOffset, 14, ''),
               state:
                   const fb.Int64Reader().vTableGet(buffer, rootOffset, 16, 0));
+          object.project.targetId =
+              const fb.Int64Reader().vTableGet(buffer, rootOffset, 20, 0);
+          object.project.attach(store);
+          return object;
+        }),
+    Project: EntityDefinition<Project>(
+        model: _entities[1],
+        toOneRelations: (Project object) => [],
+        toManyRelations: (Project object) => {
+              RelInfo<Task>.toOneBacklink(
+                      9, object.id, (Task srcObject) => srcObject.project):
+                  object.tasks
+            },
+        getId: (Project object) => object.id,
+        setId: (Project object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Project object, fb.Builder fbb) {
+          final nameOffset = fbb.writeString(object.name);
+          fbb.startTable(3);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, nameOffset);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
 
+          final object = Project(
+              id: const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
+              name:
+                  const fb.StringReader().vTableGet(buffer, rootOffset, 6, ''));
+          InternalToManyAccess.setRelInfo(
+              object.tasks,
+              store,
+              RelInfo<Task>.toOneBacklink(
+                  9, object.id, (Task srcObject) => srcObject.project),
+              store.box<Project>());
           return object;
         })
   };
@@ -176,4 +244,17 @@ class Task_ {
 
   /// see [Task.type]
   static final type = QueryIntegerProperty<Task>(_entities[0].properties[7]);
+
+  /// see [Task.project]
+  static final project =
+      QueryRelationToOne<Task, Project>(_entities[0].properties[8]);
+}
+
+/// [Project] entity fields to define ObjectBox queries.
+class Project_ {
+  /// see [Project.id]
+  static final id = QueryIntegerProperty<Project>(_entities[1].properties[0]);
+
+  /// see [Project.name]
+  static final name = QueryStringProperty<Project>(_entities[1].properties[1]);
 }

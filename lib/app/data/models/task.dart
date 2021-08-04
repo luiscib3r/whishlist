@@ -1,4 +1,5 @@
 import 'package:objectbox/objectbox.dart';
+import 'package:whishlist/app/data/models/models.dart';
 
 @Entity()
 class Task {
@@ -14,13 +15,15 @@ class Task {
   });
 
   int id;
-  final String title;
-  final String description;
-  final DateTime dueDate;
-  final String resolver;
-  final String author;
-  final int state;
-  final int type;
+  String title;
+  String description;
+  DateTime dueDate;
+  String resolver;
+  String author;
+  int state;
+  int type;
+
+  final project = ToOne<Project>();
 }
 
 mixin TaskType {

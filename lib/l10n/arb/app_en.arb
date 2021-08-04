@@ -1,7 +1,7 @@
 {
     "@@locale": "en",
     "appTitle": "Whishlist",
-    "sections": "Sections",
+    "projects": "Projects",
     "tasks": "Tasks",
     "notifications": "Notifications"
 }
