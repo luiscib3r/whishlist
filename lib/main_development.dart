@@ -10,6 +10,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:injectable/injectable.dart';
 
 import 'package:whishlist/app/app.dart';
 import 'package:whishlist/app/app_bloc_observer.dart';
@@ -21,7 +22,11 @@ void main() {
   };
 
   runZonedGuarded(
-    () => runApp(const App()),
+    () => runApp(
+      const App(
+        environment: Environment.dev,
+      ),
+    ),
     (error, stackTrace) => log(error.toString(), stackTrace: stackTrace),
   );
 }

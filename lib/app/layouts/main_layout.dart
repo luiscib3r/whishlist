@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whishlist/app/constants.dart';
+import 'package:whishlist/app/theme/constants.dart';
 
 class MainLayout extends StatefulWidget {
   const MainLayout({

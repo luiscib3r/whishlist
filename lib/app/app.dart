@@ -7,34 +7,49 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:injectable/injectable.dart';
+import 'package:whishlist/app/dependencies/dependencies.dart';
+import 'package:whishlist/app/theme/theme.dart';
+import 'package:whishlist/app/widgets/loading.dart';
 import 'package:whishlist/home/home.dart';
 import 'package:whishlist/l10n/l10n.dart';
 
-import 'constants.dart';
-
 class App extends StatelessWidget {
-  const App({Key? key}) : super(key: key);
+  const App({
+    Key? key,
+    this.environment = Environment.prod,
+  }) : super(key: key);
+
+  final String environment;
+
+  Future<void> _onInit() async {
+    await setupDependencies(environment);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Whishlist',
-      theme: ThemeData(
-        accentColor: primaryColor,
-        appBarTheme: const AppBarTheme(
-          color: Colors.transparent,
-          elevation: 0,
-        ),
-        primaryColor: primaryColor,
-        fontFamily: 'Montserrat',
-      ),
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-      ],
-      supportedLocales: AppLocalizations.supportedLocales,
-      home: const HomePage(),
-      debugShowCheckedModeBanner: false,
+    final init = _onInit();
+    return FutureBuilder(
+      future: init,
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.done) {
+          return app(const HomePage());
+        }
+
+        return app(const Loading());
+      },
     );
   }
+
+  Widget app(Widget home) => MaterialApp(
+        title: 'Whishlist',
+        theme: appTheme,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: home,
+        debugShowCheckedModeBanner: false,
+      );
 }

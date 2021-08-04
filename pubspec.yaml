@@ -16,20 +16,27 @@ dependencies:
   intl: ^0.17.0
   freezed_annotation: ^0.14.2
   json_annotation: ^4.0.1
+  objectbox: ^1.1.1
+  objectbox_flutter_libs: ^1.1.1
+  faker: ^2.0.0
+  injectable: ^1.4.1
+  get_it: ^7.2.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   bloc_test: ^8.1.0
   mocktail: ^0.1.0
-  very_good_analysis: ^2.1.0
+  very_good_analysis: ^2.3.0
   freezed: ^0.14.2
   build_runner: ^2.1.0
   json_serializable: ^4.1.4
   flutter_gen_runner: ^3.1.1
   flutter_native_splash: ^1.2.1
   flutter_launcher_icons: ^0.9.1
-
+  objectbox_generator: ^1.1.1
+  injectable_generator: ^1.4.1
+  
 flutter:
   uses-material-design: true
   generate: true
