@@ -27,8 +27,6 @@ class NotificationsBloc extends Bloc<NotificationsEvent, NotificationsState> {
         final notifications = _repository.getAll();
 
         yield _Ready(notifications);
-
-        
       },
     );
   }
