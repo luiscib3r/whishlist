@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whishlist/app/data/models/models.dart';
+import 'package:whishlist/app/theme/constants.dart';
 import 'package:whishlist/app/widgets/widgets.dart';
 import 'package:whishlist/l10n/l10n.dart';
 import 'package:whishlist/projects/projects.dart';
@@ -11,6 +12,8 @@ class ProjectsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final bloc = context.read<ProjectsBloc>();
+
     return Scaffold(
       appBar: AppBar(
         title: AppBarTitle(l10n.projects),
@@ -23,10 +26,14 @@ class ProjectsView extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          await Navigator.push(
             context,
             CreateProjectPage.route(),
+          );
+
+          bloc.add(
+            const ProjectsEvent.started(),
           );
         },
         child: const Icon(Icons.add),
@@ -36,6 +43,7 @@ class ProjectsView extends StatelessWidget {
 
   Widget ready(BuildContext context, List<Project> projects) {
     final l10n = context.l10n;
+    final bloc = context.read<ProjectsBloc>();
 
     if (projects.isEmpty) {
       return Column(
@@ -52,8 +60,37 @@ class ProjectsView extends StatelessWidget {
       );
     }
 
-    return const Center(
-      child: Text('ok'),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          ...projects.map(
+            (e) => ListTile(
+              title: Text(e.name),
+              subtitle: Text(e.description),
+              leading: const Icon(
+                Icons.folder_rounded,
+                color: primaryColor,
+              ),
+              trailing: IconButton(
+                icon: const Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
+                onPressed: () {
+                  ConfirmDialog(
+                    message: l10n.deleteConfirm,
+                    onConfirm: () {
+                      bloc.add(
+                        ProjectsEvent.delete(e.id),
+                      );
+                    },
+                  ).show(context);
+                },
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

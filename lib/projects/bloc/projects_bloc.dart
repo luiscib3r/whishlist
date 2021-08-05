@@ -22,11 +22,22 @@ class ProjectsBloc extends Bloc<ProjectsEvent, ProjectsState> {
   ) async* {
     yield* event.when(
       started: _started,
+      delete: _delete,
     );
   }
 
   Stream<ProjectsState> _started() async* {
     yield const _Loading();
+
+    final projects = _repository.getAll();
+
+    yield _Ready(projects);
+  }
+
+  Stream<ProjectsState> _delete(int id) async* {
+    yield const _Loading();
+
+    _repository.remove(id);
 
     final projects = _repository.getAll();
 

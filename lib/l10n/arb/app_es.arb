@@ -9,5 +9,6 @@
     "name": "Nombre",
     "title": "Título",
     "description": "Descripción",
-    "fieldRequired": "Este campo es requerido"
+    "fieldRequired": "Este campo es requerido",
+    "deleteConfirm": "¿Estás seguro de que quieres eliminar?"
 }
