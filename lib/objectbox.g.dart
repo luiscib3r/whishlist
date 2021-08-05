@@ -9,6 +9,7 @@ import 'package:objectbox/internal.dart'; // generated code can access "internal
 import 'package:objectbox/objectbox.dart';
 import 'package:objectbox_flutter_libs/objectbox_flutter_libs.dart';
 
+import 'app/data/models/notification.dart';
 import 'app/data/models/project.dart';
 import 'app/data/models/task.dart';
 
@@ -96,7 +97,31 @@ final _entities = <ModelEntity>[
       relations: <ModelRelation>[],
       backlinks: <ModelBacklink>[
         ModelBacklink(name: 'tasks', srcEntity: 'Task', srcField: '')
-      ])
+      ]),
+  ModelEntity(
+      id: const IdUid(3, 2668565805348643418),
+      name: 'Notification',
+      lastPropertyId: const IdUid(3, 3735268571572534065),
+      flags: 0,
+      properties: <ModelProperty>[
+        ModelProperty(
+            id: const IdUid(1, 105222233718800834),
+            name: 'id',
+            type: 6,
+            flags: 1),
+        ModelProperty(
+            id: const IdUid(2, 3943222807268296430),
+            name: 'title',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 3735268571572534065),
+            name: 'message',
+            type: 9,
+            flags: 0)
+      ],
+      relations: <ModelRelation>[],
+      backlinks: <ModelBacklink>[])
 ];
 
 /// Open an ObjectBox store with the model declared in this file.
@@ -119,7 +144,7 @@ Future<Store> openStore(
 ModelDefinition getObjectBoxModel() {
   final model = ModelInfo(
       entities: _entities,
-      lastEntityId: const IdUid(2, 102663117268311083),
+      lastEntityId: const IdUid(3, 2668565805348643418),
       lastIndexId: const IdUid(1, 3346496873267287634),
       lastRelationId: const IdUid(0, 0),
       lastSequenceId: const IdUid(0, 0),
@@ -221,6 +246,37 @@ ModelDefinition getObjectBoxModel() {
                   9, object.id, (Task srcObject) => srcObject.project),
               store.box<Project>());
           return object;
+        }),
+    Notification: EntityDefinition<Notification>(
+        model: _entities[2],
+        toOneRelations: (Notification object) => [],
+        toManyRelations: (Notification object) => {},
+        getId: (Notification object) => object.id,
+        setId: (Notification object, int id) {
+          object.id = id;
+        },
+        objectToFB: (Notification object, fb.Builder fbb) {
+          final titleOffset = fbb.writeString(object.title);
+          final messageOffset = fbb.writeString(object.message);
+          fbb.startTable(4);
+          fbb.addInt64(0, object.id);
+          fbb.addOffset(1, titleOffset);
+          fbb.addOffset(2, messageOffset);
+          fbb.finish(fbb.endTable());
+          return object.id;
+        },
+        objectFromFB: (Store store, ByteData fbData) {
+          final buffer = fb.BufferContext(fbData);
+          final rootOffset = buffer.derefObject(0);
+
+          final object = Notification(
+              id: const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
+              title:
+                  const fb.StringReader().vTableGet(buffer, rootOffset, 6, ''),
+              message:
+                  const fb.StringReader().vTableGet(buffer, rootOffset, 8, ''));
+
+          return object;
         })
   };
 
@@ -270,4 +326,19 @@ class Project_ {
   /// see [Project.description]
   static final description =
       QueryStringProperty<Project>(_entities[1].properties[2]);
+}
+
+/// [Notification] entity fields to define ObjectBox queries.
+class Notification_ {
+  /// see [Notification.id]
+  static final id =
+      QueryIntegerProperty<Notification>(_entities[2].properties[0]);
+
+  /// see [Notification.title]
+  static final title =
+      QueryStringProperty<Notification>(_entities[2].properties[1]);
+
+  /// see [Notification.message]
+  static final message =
+      QueryStringProperty<Notification>(_entities[2].properties[2]);
 }
