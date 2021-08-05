@@ -77,15 +77,32 @@ class TaskCard extends StatelessWidget {
             ),
             Row(
               children: [
-                Row(
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Icon(
-                      Icons.calendar_today,
-                      color: primaryColor,
-                      size: 16,
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.calendar_today,
+                          color: primaryColor,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(dateValue),
+                      ],
                     ),
-                    const SizedBox(width: 8),
-                    Text(dateValue),
+                    const SizedBox(height: 8),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.folder_open_outlined,
+                          color: primaryColor,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 8),
+                        Text(task.project.target?.name ?? 'No project'),
+                      ],
+                    ),
                   ],
                 ),
                 const Spacer(),

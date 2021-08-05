@@ -110,6 +110,19 @@ class CreateTaskView extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      ProjectInput(
+                        projects: state.projects,
+                        onChange: (value) {
+                          bloc.add(
+                            CreateTaskEvent.projectChanged(value),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),

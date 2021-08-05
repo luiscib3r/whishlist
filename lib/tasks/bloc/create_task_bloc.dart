@@ -16,11 +16,13 @@ part 'create_task_bloc.freezed.dart';
 class CreateTaskBloc extends Bloc<CreateTaskEvent, CreateTaskState> {
   CreateTaskBloc(
     this._repository,
+    this._projectRepository,
     this._notificationRepository,
     this._notificationService,
   ) : super(CreateTaskState.initial());
 
   final TaskRepository _repository;
+  final ProjectRepository _projectRepository;
   final NotificationRepository _notificationRepository;
   final NotificationService _notificationService;
 
@@ -29,13 +31,14 @@ class CreateTaskBloc extends Bloc<CreateTaskEvent, CreateTaskState> {
     CreateTaskEvent event,
   ) async* {
     yield* event.when(
-      titleChanged: _nameChanged,
-      descriptionChanged: _descriptionChanged,
-      submit: _submit,
-      dueDateChanged: _dueDateChanged,
-      resolverChanged: _resolverChanged,
-      typeChanged: _typeChanged,
-    );
+        titleChanged: _nameChanged,
+        descriptionChanged: _descriptionChanged,
+        submit: _submit,
+        dueDateChanged: _dueDateChanged,
+        resolverChanged: _resolverChanged,
+        typeChanged: _typeChanged,
+        loadProjects: _loadProjects,
+        projectChanged: _projectChanged);
   }
 
   Stream<CreateTaskState> _nameChanged(String value) async* {
@@ -43,7 +46,7 @@ class CreateTaskBloc extends Bloc<CreateTaskEvent, CreateTaskState> {
 
     yield state.copyWith(
       title: value,
-      isValid: valid,
+      isValid: valid && state.project != null,
     );
   }
 
@@ -52,7 +55,7 @@ class CreateTaskBloc extends Bloc<CreateTaskEvent, CreateTaskState> {
 
     yield state.copyWith(
       description: value,
-      isValid: valid,
+      isValid: valid && state.project != null,
     );
   }
 
@@ -103,6 +106,8 @@ class CreateTaskBloc extends Bloc<CreateTaskEvent, CreateTaskState> {
         state: TaskState.nueva,
       );
 
+      task.project.target = state.project;
+
       _repository.put(task);
 
       final notification = Notification(
@@ -116,5 +121,22 @@ class CreateTaskBloc extends Bloc<CreateTaskEvent, CreateTaskState> {
 
       yield state.copyWith(isDone: true);
     }
+  }
+
+  Stream<CreateTaskState> _loadProjects() async* {
+    final projects = _projectRepository.getAll();
+
+    yield state.copyWith(
+      projects: projects,
+    );
+  }
+
+  Stream<CreateTaskState> _projectChanged(Project project) async* {
+    final valid = state.title.isNotEmpty && state.description.isNotEmpty;
+
+    yield state.copyWith(
+      project: project,
+      isValid: valid,
+    );
   }
 }

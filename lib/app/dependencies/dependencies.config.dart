@@ -40,6 +40,7 @@ _i1.GetIt $initGetIt(_i1.GetIt get,
   gh.factory<_i12.TasksBloc>(() => _i12.TasksBloc(get<_i4.TaskRepository>()));
   gh.factory<_i13.CreateTaskBloc>(() => _i13.CreateTaskBloc(
       get<_i4.TaskRepository>(),
+      get<_i4.ProjectRepository>(),
       get<_i4.NotificationRepository>(),
       get<_i7.NotificationService>()));
   return get;

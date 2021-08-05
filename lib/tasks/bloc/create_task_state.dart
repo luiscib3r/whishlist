@@ -10,6 +10,8 @@ class CreateTaskState with _$CreateTaskState {
     required DateTime dueDate,
     required bool isValid,
     required bool isDone,
+    required List<Project> projects,
+    required Project? project,
   }) = _CreateTaskState;
 
   factory CreateTaskState.initial() => CreateTaskState(
@@ -20,5 +22,7 @@ class CreateTaskState with _$CreateTaskState {
         type: 0,
         resolver: '',
         dueDate: DateTime.now(),
+        projects: [],
+        project: null,
       );
 }

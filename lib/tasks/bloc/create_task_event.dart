@@ -2,6 +2,8 @@ part of 'create_task_bloc.dart';
 
 @freezed
 class CreateTaskEvent with _$CreateTaskEvent {
+  const factory CreateTaskEvent.loadProjects() = _LoadProjects;
+
   const factory CreateTaskEvent.titleChanged(String value) = _TitleChanged;
 
   const factory CreateTaskEvent.descriptionChanged(String value) =
@@ -16,4 +18,7 @@ class CreateTaskEvent with _$CreateTaskEvent {
       _DueDateChanged;
 
   const factory CreateTaskEvent.submit() = _Submit;
+
+  const factory CreateTaskEvent.projectChanged(Project project) =
+      _ProjectChanged;
 }

@@ -16,6 +16,10 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$CreateTaskEventTearOff {
   const _$CreateTaskEventTearOff();
 
+  _LoadProjects loadProjects() {
+    return const _LoadProjects();
+  }
+
   _TitleChanged titleChanged(String value) {
     return _TitleChanged(
       value,
@@ -49,6 +53,12 @@ class _$CreateTaskEventTearOff {
   _Submit submit() {
     return const _Submit();
   }
+
+  _ProjectChanged projectChanged(Project project) {
+    return _ProjectChanged(
+      project,
+    );
+  }
 }
 
 /// @nodoc
@@ -58,43 +68,51 @@ const $CreateTaskEvent = _$CreateTaskEventTearOff();
 mixin _$CreateTaskEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() loadProjects,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(String value) typeChanged,
     required TResult Function(String value) resolverChanged,
     required TResult Function(DateTime value) dueDateChanged,
     required TResult Function() submit,
+    required TResult Function(Project project) projectChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProjects,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(String value)? typeChanged,
     TResult Function(String value)? resolverChanged,
     TResult Function(DateTime value)? dueDateChanged,
     TResult Function()? submit,
+    TResult Function(Project project)? projectChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjects value) loadProjects,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_TypeChanged value) typeChanged,
     required TResult Function(_ResolverChanged value) resolverChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_ProjectChanged value) projectChanged,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjects value)? loadProjects,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_TypeChanged value)? typeChanged,
     TResult Function(_ResolverChanged value)? resolverChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
     TResult Function(_Submit value)? submit,
+    TResult Function(_ProjectChanged value)? projectChanged,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,6 +133,116 @@ class _$CreateTaskEventCopyWithImpl<$Res>
   final CreateTaskEvent _value;
   // ignore: unused_field
   final $Res Function(CreateTaskEvent) _then;
+}
+
+/// @nodoc
+abstract class _$LoadProjectsCopyWith<$Res> {
+  factory _$LoadProjectsCopyWith(
+          _LoadProjects value, $Res Function(_LoadProjects) then) =
+      __$LoadProjectsCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$LoadProjectsCopyWithImpl<$Res>
+    extends _$CreateTaskEventCopyWithImpl<$Res>
+    implements _$LoadProjectsCopyWith<$Res> {
+  __$LoadProjectsCopyWithImpl(
+      _LoadProjects _value, $Res Function(_LoadProjects) _then)
+      : super(_value, (v) => _then(v as _LoadProjects));
+
+  @override
+  _LoadProjects get _value => super._value as _LoadProjects;
+}
+
+/// @nodoc
+
+class _$_LoadProjects implements _LoadProjects {
+  const _$_LoadProjects();
+
+  @override
+  String toString() {
+    return 'CreateTaskEvent.loadProjects()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _LoadProjects);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadProjects,
+    required TResult Function(String value) titleChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function(String value) typeChanged,
+    required TResult Function(String value) resolverChanged,
+    required TResult Function(DateTime value) dueDateChanged,
+    required TResult Function() submit,
+    required TResult Function(Project project) projectChanged,
+  }) {
+    return loadProjects();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProjects,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(String value)? typeChanged,
+    TResult Function(String value)? resolverChanged,
+    TResult Function(DateTime value)? dueDateChanged,
+    TResult Function()? submit,
+    TResult Function(Project project)? projectChanged,
+    required TResult orElse(),
+  }) {
+    if (loadProjects != null) {
+      return loadProjects();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjects value) loadProjects,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_TypeChanged value) typeChanged,
+    required TResult Function(_ResolverChanged value) resolverChanged,
+    required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_Submit value) submit,
+    required TResult Function(_ProjectChanged value) projectChanged,
+  }) {
+    return loadProjects(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjects value)? loadProjects,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_TypeChanged value)? typeChanged,
+    TResult Function(_ResolverChanged value)? resolverChanged,
+    TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_Submit value)? submit,
+    TResult Function(_ProjectChanged value)? projectChanged,
+    required TResult orElse(),
+  }) {
+    if (loadProjects != null) {
+      return loadProjects(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _LoadProjects implements CreateTaskEvent {
+  const factory _LoadProjects() = _$_LoadProjects;
 }
 
 /// @nodoc
@@ -182,12 +310,14 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() loadProjects,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(String value) typeChanged,
     required TResult Function(String value) resolverChanged,
     required TResult Function(DateTime value) dueDateChanged,
     required TResult Function() submit,
+    required TResult Function(Project project) projectChanged,
   }) {
     return titleChanged(value);
   }
@@ -195,12 +325,14 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProjects,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(String value)? typeChanged,
     TResult Function(String value)? resolverChanged,
     TResult Function(DateTime value)? dueDateChanged,
     TResult Function()? submit,
+    TResult Function(Project project)? projectChanged,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -212,12 +344,14 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjects value) loadProjects,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_TypeChanged value) typeChanged,
     required TResult Function(_ResolverChanged value) resolverChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_ProjectChanged value) projectChanged,
   }) {
     return titleChanged(this);
   }
@@ -225,12 +359,14 @@ class _$_TitleChanged implements _TitleChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjects value)? loadProjects,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_TypeChanged value)? typeChanged,
     TResult Function(_ResolverChanged value)? resolverChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
     TResult Function(_Submit value)? submit,
+    TResult Function(_ProjectChanged value)? projectChanged,
     required TResult orElse(),
   }) {
     if (titleChanged != null) {
@@ -314,12 +450,14 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() loadProjects,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(String value) typeChanged,
     required TResult Function(String value) resolverChanged,
     required TResult Function(DateTime value) dueDateChanged,
     required TResult Function() submit,
+    required TResult Function(Project project) projectChanged,
   }) {
     return descriptionChanged(value);
   }
@@ -327,12 +465,14 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProjects,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(String value)? typeChanged,
     TResult Function(String value)? resolverChanged,
     TResult Function(DateTime value)? dueDateChanged,
     TResult Function()? submit,
+    TResult Function(Project project)? projectChanged,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -344,12 +484,14 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjects value) loadProjects,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_TypeChanged value) typeChanged,
     required TResult Function(_ResolverChanged value) resolverChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_ProjectChanged value) projectChanged,
   }) {
     return descriptionChanged(this);
   }
@@ -357,12 +499,14 @@ class _$_DescriptionChanged implements _DescriptionChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjects value)? loadProjects,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_TypeChanged value)? typeChanged,
     TResult Function(_ResolverChanged value)? resolverChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
     TResult Function(_Submit value)? submit,
+    TResult Function(_ProjectChanged value)? projectChanged,
     required TResult orElse(),
   }) {
     if (descriptionChanged != null) {
@@ -446,12 +590,14 @@ class _$_TypeChanged implements _TypeChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() loadProjects,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(String value) typeChanged,
     required TResult Function(String value) resolverChanged,
     required TResult Function(DateTime value) dueDateChanged,
     required TResult Function() submit,
+    required TResult Function(Project project) projectChanged,
   }) {
     return typeChanged(value);
   }
@@ -459,12 +605,14 @@ class _$_TypeChanged implements _TypeChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProjects,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(String value)? typeChanged,
     TResult Function(String value)? resolverChanged,
     TResult Function(DateTime value)? dueDateChanged,
     TResult Function()? submit,
+    TResult Function(Project project)? projectChanged,
     required TResult orElse(),
   }) {
     if (typeChanged != null) {
@@ -476,12 +624,14 @@ class _$_TypeChanged implements _TypeChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjects value) loadProjects,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_TypeChanged value) typeChanged,
     required TResult Function(_ResolverChanged value) resolverChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_ProjectChanged value) projectChanged,
   }) {
     return typeChanged(this);
   }
@@ -489,12 +639,14 @@ class _$_TypeChanged implements _TypeChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjects value)? loadProjects,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_TypeChanged value)? typeChanged,
     TResult Function(_ResolverChanged value)? resolverChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
     TResult Function(_Submit value)? submit,
+    TResult Function(_ProjectChanged value)? projectChanged,
     required TResult orElse(),
   }) {
     if (typeChanged != null) {
@@ -578,12 +730,14 @@ class _$_ResolverChanged implements _ResolverChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() loadProjects,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(String value) typeChanged,
     required TResult Function(String value) resolverChanged,
     required TResult Function(DateTime value) dueDateChanged,
     required TResult Function() submit,
+    required TResult Function(Project project) projectChanged,
   }) {
     return resolverChanged(value);
   }
@@ -591,12 +745,14 @@ class _$_ResolverChanged implements _ResolverChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProjects,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(String value)? typeChanged,
     TResult Function(String value)? resolverChanged,
     TResult Function(DateTime value)? dueDateChanged,
     TResult Function()? submit,
+    TResult Function(Project project)? projectChanged,
     required TResult orElse(),
   }) {
     if (resolverChanged != null) {
@@ -608,12 +764,14 @@ class _$_ResolverChanged implements _ResolverChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjects value) loadProjects,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_TypeChanged value) typeChanged,
     required TResult Function(_ResolverChanged value) resolverChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_ProjectChanged value) projectChanged,
   }) {
     return resolverChanged(this);
   }
@@ -621,12 +779,14 @@ class _$_ResolverChanged implements _ResolverChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjects value)? loadProjects,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_TypeChanged value)? typeChanged,
     TResult Function(_ResolverChanged value)? resolverChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
     TResult Function(_Submit value)? submit,
+    TResult Function(_ProjectChanged value)? projectChanged,
     required TResult orElse(),
   }) {
     if (resolverChanged != null) {
@@ -710,12 +870,14 @@ class _$_DueDateChanged implements _DueDateChanged {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() loadProjects,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(String value) typeChanged,
     required TResult Function(String value) resolverChanged,
     required TResult Function(DateTime value) dueDateChanged,
     required TResult Function() submit,
+    required TResult Function(Project project) projectChanged,
   }) {
     return dueDateChanged(value);
   }
@@ -723,12 +885,14 @@ class _$_DueDateChanged implements _DueDateChanged {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProjects,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(String value)? typeChanged,
     TResult Function(String value)? resolverChanged,
     TResult Function(DateTime value)? dueDateChanged,
     TResult Function()? submit,
+    TResult Function(Project project)? projectChanged,
     required TResult orElse(),
   }) {
     if (dueDateChanged != null) {
@@ -740,12 +904,14 @@ class _$_DueDateChanged implements _DueDateChanged {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjects value) loadProjects,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_TypeChanged value) typeChanged,
     required TResult Function(_ResolverChanged value) resolverChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_ProjectChanged value) projectChanged,
   }) {
     return dueDateChanged(this);
   }
@@ -753,12 +919,14 @@ class _$_DueDateChanged implements _DueDateChanged {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjects value)? loadProjects,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_TypeChanged value)? typeChanged,
     TResult Function(_ResolverChanged value)? resolverChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
     TResult Function(_Submit value)? submit,
+    TResult Function(_ProjectChanged value)? projectChanged,
     required TResult orElse(),
   }) {
     if (dueDateChanged != null) {
@@ -814,12 +982,14 @@ class _$_Submit implements _Submit {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() loadProjects,
     required TResult Function(String value) titleChanged,
     required TResult Function(String value) descriptionChanged,
     required TResult Function(String value) typeChanged,
     required TResult Function(String value) resolverChanged,
     required TResult Function(DateTime value) dueDateChanged,
     required TResult Function() submit,
+    required TResult Function(Project project) projectChanged,
   }) {
     return submit();
   }
@@ -827,12 +997,14 @@ class _$_Submit implements _Submit {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProjects,
     TResult Function(String value)? titleChanged,
     TResult Function(String value)? descriptionChanged,
     TResult Function(String value)? typeChanged,
     TResult Function(String value)? resolverChanged,
     TResult Function(DateTime value)? dueDateChanged,
     TResult Function()? submit,
+    TResult Function(Project project)? projectChanged,
     required TResult orElse(),
   }) {
     if (submit != null) {
@@ -844,12 +1016,14 @@ class _$_Submit implements _Submit {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjects value) loadProjects,
     required TResult Function(_TitleChanged value) titleChanged,
     required TResult Function(_DescriptionChanged value) descriptionChanged,
     required TResult Function(_TypeChanged value) typeChanged,
     required TResult Function(_ResolverChanged value) resolverChanged,
     required TResult Function(_DueDateChanged value) dueDateChanged,
     required TResult Function(_Submit value) submit,
+    required TResult Function(_ProjectChanged value) projectChanged,
   }) {
     return submit(this);
   }
@@ -857,12 +1031,14 @@ class _$_Submit implements _Submit {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjects value)? loadProjects,
     TResult Function(_TitleChanged value)? titleChanged,
     TResult Function(_DescriptionChanged value)? descriptionChanged,
     TResult Function(_TypeChanged value)? typeChanged,
     TResult Function(_ResolverChanged value)? resolverChanged,
     TResult Function(_DueDateChanged value)? dueDateChanged,
     TResult Function(_Submit value)? submit,
+    TResult Function(_ProjectChanged value)? projectChanged,
     required TResult orElse(),
   }) {
     if (submit != null) {
@@ -877,6 +1053,146 @@ abstract class _Submit implements CreateTaskEvent {
 }
 
 /// @nodoc
+abstract class _$ProjectChangedCopyWith<$Res> {
+  factory _$ProjectChangedCopyWith(
+          _ProjectChanged value, $Res Function(_ProjectChanged) then) =
+      __$ProjectChangedCopyWithImpl<$Res>;
+  $Res call({Project project});
+}
+
+/// @nodoc
+class __$ProjectChangedCopyWithImpl<$Res>
+    extends _$CreateTaskEventCopyWithImpl<$Res>
+    implements _$ProjectChangedCopyWith<$Res> {
+  __$ProjectChangedCopyWithImpl(
+      _ProjectChanged _value, $Res Function(_ProjectChanged) _then)
+      : super(_value, (v) => _then(v as _ProjectChanged));
+
+  @override
+  _ProjectChanged get _value => super._value as _ProjectChanged;
+
+  @override
+  $Res call({
+    Object? project = freezed,
+  }) {
+    return _then(_ProjectChanged(
+      project == freezed
+          ? _value.project
+          : project // ignore: cast_nullable_to_non_nullable
+              as Project,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_ProjectChanged implements _ProjectChanged {
+  const _$_ProjectChanged(this.project);
+
+  @override
+  final Project project;
+
+  @override
+  String toString() {
+    return 'CreateTaskEvent.projectChanged(project: $project)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ProjectChanged &&
+            (identical(other.project, project) ||
+                const DeepCollectionEquality().equals(other.project, project)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(project);
+
+  @JsonKey(ignore: true)
+  @override
+  _$ProjectChangedCopyWith<_ProjectChanged> get copyWith =>
+      __$ProjectChangedCopyWithImpl<_ProjectChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loadProjects,
+    required TResult Function(String value) titleChanged,
+    required TResult Function(String value) descriptionChanged,
+    required TResult Function(String value) typeChanged,
+    required TResult Function(String value) resolverChanged,
+    required TResult Function(DateTime value) dueDateChanged,
+    required TResult Function() submit,
+    required TResult Function(Project project) projectChanged,
+  }) {
+    return projectChanged(project);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loadProjects,
+    TResult Function(String value)? titleChanged,
+    TResult Function(String value)? descriptionChanged,
+    TResult Function(String value)? typeChanged,
+    TResult Function(String value)? resolverChanged,
+    TResult Function(DateTime value)? dueDateChanged,
+    TResult Function()? submit,
+    TResult Function(Project project)? projectChanged,
+    required TResult orElse(),
+  }) {
+    if (projectChanged != null) {
+      return projectChanged(project);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_LoadProjects value) loadProjects,
+    required TResult Function(_TitleChanged value) titleChanged,
+    required TResult Function(_DescriptionChanged value) descriptionChanged,
+    required TResult Function(_TypeChanged value) typeChanged,
+    required TResult Function(_ResolverChanged value) resolverChanged,
+    required TResult Function(_DueDateChanged value) dueDateChanged,
+    required TResult Function(_Submit value) submit,
+    required TResult Function(_ProjectChanged value) projectChanged,
+  }) {
+    return projectChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_LoadProjects value)? loadProjects,
+    TResult Function(_TitleChanged value)? titleChanged,
+    TResult Function(_DescriptionChanged value)? descriptionChanged,
+    TResult Function(_TypeChanged value)? typeChanged,
+    TResult Function(_ResolverChanged value)? resolverChanged,
+    TResult Function(_DueDateChanged value)? dueDateChanged,
+    TResult Function(_Submit value)? submit,
+    TResult Function(_ProjectChanged value)? projectChanged,
+    required TResult orElse(),
+  }) {
+    if (projectChanged != null) {
+      return projectChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ProjectChanged implements CreateTaskEvent {
+  const factory _ProjectChanged(Project project) = _$_ProjectChanged;
+
+  Project get project => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$ProjectChangedCopyWith<_ProjectChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 class _$CreateTaskStateTearOff {
   const _$CreateTaskStateTearOff();
 
@@ -887,7 +1203,9 @@ class _$CreateTaskStateTearOff {
       required String resolver,
       required DateTime dueDate,
       required bool isValid,
-      required bool isDone}) {
+      required bool isDone,
+      required List<Project> projects,
+      required Project? project}) {
     return _CreateTaskState(
       title: title,
       description: description,
@@ -896,6 +1214,8 @@ class _$CreateTaskStateTearOff {
       dueDate: dueDate,
       isValid: isValid,
       isDone: isDone,
+      projects: projects,
+      project: project,
     );
   }
 }
@@ -912,6 +1232,8 @@ mixin _$CreateTaskState {
   DateTime get dueDate => throw _privateConstructorUsedError;
   bool get isValid => throw _privateConstructorUsedError;
   bool get isDone => throw _privateConstructorUsedError;
+  List<Project> get projects => throw _privateConstructorUsedError;
+  Project? get project => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CreateTaskStateCopyWith<CreateTaskState> get copyWith =>
@@ -930,7 +1252,9 @@ abstract class $CreateTaskStateCopyWith<$Res> {
       String resolver,
       DateTime dueDate,
       bool isValid,
-      bool isDone});
+      bool isDone,
+      List<Project> projects,
+      Project? project});
 }
 
 /// @nodoc
@@ -951,6 +1275,8 @@ class _$CreateTaskStateCopyWithImpl<$Res>
     Object? dueDate = freezed,
     Object? isValid = freezed,
     Object? isDone = freezed,
+    Object? projects = freezed,
+    Object? project = freezed,
   }) {
     return _then(_value.copyWith(
       title: title == freezed
@@ -981,6 +1307,14 @@ class _$CreateTaskStateCopyWithImpl<$Res>
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
               as bool,
+      projects: projects == freezed
+          ? _value.projects
+          : projects // ignore: cast_nullable_to_non_nullable
+              as List<Project>,
+      project: project == freezed
+          ? _value.project
+          : project // ignore: cast_nullable_to_non_nullable
+              as Project?,
     ));
   }
 }
@@ -999,7 +1333,9 @@ abstract class _$CreateTaskStateCopyWith<$Res>
       String resolver,
       DateTime dueDate,
       bool isValid,
-      bool isDone});
+      bool isDone,
+      List<Project> projects,
+      Project? project});
 }
 
 /// @nodoc
@@ -1022,6 +1358,8 @@ class __$CreateTaskStateCopyWithImpl<$Res>
     Object? dueDate = freezed,
     Object? isValid = freezed,
     Object? isDone = freezed,
+    Object? projects = freezed,
+    Object? project = freezed,
   }) {
     return _then(_CreateTaskState(
       title: title == freezed
@@ -1052,6 +1390,14 @@ class __$CreateTaskStateCopyWithImpl<$Res>
           ? _value.isDone
           : isDone // ignore: cast_nullable_to_non_nullable
               as bool,
+      projects: projects == freezed
+          ? _value.projects
+          : projects // ignore: cast_nullable_to_non_nullable
+              as List<Project>,
+      project: project == freezed
+          ? _value.project
+          : project // ignore: cast_nullable_to_non_nullable
+              as Project?,
     ));
   }
 }
@@ -1066,7 +1412,9 @@ class _$_CreateTaskState implements _CreateTaskState {
       required this.resolver,
       required this.dueDate,
       required this.isValid,
-      required this.isDone});
+      required this.isDone,
+      required this.projects,
+      required this.project});
 
   @override
   final String title;
@@ -1082,10 +1430,14 @@ class _$_CreateTaskState implements _CreateTaskState {
   final bool isValid;
   @override
   final bool isDone;
+  @override
+  final List<Project> projects;
+  @override
+  final Project? project;
 
   @override
   String toString() {
-    return 'CreateTaskState(title: $title, description: $description, type: $type, resolver: $resolver, dueDate: $dueDate, isValid: $isValid, isDone: $isDone)';
+    return 'CreateTaskState(title: $title, description: $description, type: $type, resolver: $resolver, dueDate: $dueDate, isValid: $isValid, isDone: $isDone, projects: $projects, project: $project)';
   }
 
   @override
@@ -1109,7 +1461,12 @@ class _$_CreateTaskState implements _CreateTaskState {
                 const DeepCollectionEquality()
                     .equals(other.isValid, isValid)) &&
             (identical(other.isDone, isDone) ||
-                const DeepCollectionEquality().equals(other.isDone, isDone)));
+                const DeepCollectionEquality().equals(other.isDone, isDone)) &&
+            (identical(other.projects, projects) ||
+                const DeepCollectionEquality()
+                    .equals(other.projects, projects)) &&
+            (identical(other.project, project) ||
+                const DeepCollectionEquality().equals(other.project, project)));
   }
 
   @override
@@ -1121,7 +1478,9 @@ class _$_CreateTaskState implements _CreateTaskState {
       const DeepCollectionEquality().hash(resolver) ^
       const DeepCollectionEquality().hash(dueDate) ^
       const DeepCollectionEquality().hash(isValid) ^
-      const DeepCollectionEquality().hash(isDone);
+      const DeepCollectionEquality().hash(isDone) ^
+      const DeepCollectionEquality().hash(projects) ^
+      const DeepCollectionEquality().hash(project);
 
   @JsonKey(ignore: true)
   @override
@@ -1137,7 +1496,9 @@ abstract class _CreateTaskState implements CreateTaskState {
       required String resolver,
       required DateTime dueDate,
       required bool isValid,
-      required bool isDone}) = _$_CreateTaskState;
+      required bool isDone,
+      required List<Project> projects,
+      required Project? project}) = _$_CreateTaskState;
 
   @override
   String get title => throw _privateConstructorUsedError;
@@ -1153,6 +1514,10 @@ abstract class _CreateTaskState implements CreateTaskState {
   bool get isValid => throw _privateConstructorUsedError;
   @override
   bool get isDone => throw _privateConstructorUsedError;
+  @override
+  List<Project> get projects => throw _privateConstructorUsedError;
+  @override
+  Project? get project => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CreateTaskStateCopyWith<_CreateTaskState> get copyWith =>
