@@ -40,7 +40,7 @@ class _HomePageState extends State<HomePage> {
       children: const [
         ProjectsPage(),
         TasksPage(),
-        NotificationsView(),
+        NotificationsPage(),
       ],
     );
   }
