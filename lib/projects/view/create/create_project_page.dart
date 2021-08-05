@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whishlist/app/app_page_route.dart';
+import 'package:whishlist/app/dependencies/dependencies.dart';
+import 'package:whishlist/projects/bloc/create_project_bloc.dart';
 import 'package:whishlist/projects/view/create/create_project_view.dart';
 
 class CreateProjectPage extends StatelessWidget {
@@ -11,6 +14,9 @@ class CreateProjectPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const CreateProjectView();
+    return BlocProvider<CreateProjectBloc>(
+      create: (_) => getIt(),
+      child: const CreateProjectView(),
+    );
   }
 }

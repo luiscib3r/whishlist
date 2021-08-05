@@ -6,10 +6,12 @@ class Project {
   Project({
     this.id = 0,
     required this.name,
+    required this.description,
   });
 
   int id;
   String name;
+  String description;
 
   @Backlink()
   final tasks = ToMany<Task>();

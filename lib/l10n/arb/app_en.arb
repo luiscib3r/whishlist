@@ -5,5 +5,9 @@
     "tasks": "Tasks",
     "notifications": "Notifications",
     "noData": "No data",
-    "createProject": "Create project"
+    "createProject": "Create project",
+    "name": "Name",
+    "title": "Title",
+    "description": "Description",
+    "fieldRequired": "This field is required"
 }

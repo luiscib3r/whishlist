@@ -15,7 +15,7 @@ class ProjectsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider<ProjectsBloc>(
-      create: (_) => getIt<ProjectsBloc>()
+      create: (_) => getIt()
         ..add(
           const ProjectsEvent.started(),
         ),

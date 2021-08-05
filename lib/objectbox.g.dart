@@ -74,7 +74,7 @@ final _entities = <ModelEntity>[
   ModelEntity(
       id: const IdUid(2, 102663117268311083),
       name: 'Project',
-      lastPropertyId: const IdUid(2, 8380855019254401526),
+      lastPropertyId: const IdUid(3, 3605719759519685297),
       flags: 0,
       properties: <ModelProperty>[
         ModelProperty(
@@ -85,6 +85,11 @@ final _entities = <ModelEntity>[
         ModelProperty(
             id: const IdUid(2, 8380855019254401526),
             name: 'name',
+            type: 9,
+            flags: 0),
+        ModelProperty(
+            id: const IdUid(3, 3605719759519685297),
+            name: 'description',
             type: 9,
             flags: 0)
       ],
@@ -191,9 +196,11 @@ ModelDefinition getObjectBoxModel() {
         },
         objectToFB: (Project object, fb.Builder fbb) {
           final nameOffset = fbb.writeString(object.name);
-          fbb.startTable(3);
+          final descriptionOffset = fbb.writeString(object.description);
+          fbb.startTable(4);
           fbb.addInt64(0, object.id);
           fbb.addOffset(1, nameOffset);
+          fbb.addOffset(2, descriptionOffset);
           fbb.finish(fbb.endTable());
           return object.id;
         },
@@ -204,7 +211,9 @@ ModelDefinition getObjectBoxModel() {
           final object = Project(
               id: const fb.Int64Reader().vTableGet(buffer, rootOffset, 4, 0),
               name:
-                  const fb.StringReader().vTableGet(buffer, rootOffset, 6, ''));
+                  const fb.StringReader().vTableGet(buffer, rootOffset, 6, ''),
+              description:
+                  const fb.StringReader().vTableGet(buffer, rootOffset, 8, ''));
           InternalToManyAccess.setRelInfo(
               object.tasks,
               store,
@@ -257,4 +266,8 @@ class Project_ {
 
   /// see [Project.name]
   static final name = QueryStringProperty<Project>(_entities[1].properties[1]);
+
+  /// see [Project.description]
+  static final description =
+      QueryStringProperty<Project>(_entities[1].properties[2]);
 }
