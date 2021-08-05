@@ -3,5 +3,7 @@
     "appTitle": "Whishlist",
     "projects": "Proyectos",
     "tasks": "Tareas",
-    "notifications": "Notificaciones"
+    "notifications": "Notificaciones",
+    "noData": "No hay datos",
+    "createProject": "Crear proyecto"
 }

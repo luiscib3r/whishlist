@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whishlist/app/app_page_route.dart';
 import 'package:whishlist/app/layouts/main_layout.dart';
 import 'package:whishlist/l10n/l10n.dart';
 import 'package:whishlist/notifications/notifications.dart';
@@ -7,6 +8,10 @@ import 'package:whishlist/tasks/tasks.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  static Route route() {
+    return AppPageRoute(builder: (_) => const HomePage());
+  }
 
   @override
   _HomePageState createState() => _HomePageState();
@@ -33,7 +38,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
       children: const [
-        ProjectsView(),
+        ProjectsPage(),
         TasksView(),
         NotificationsView(),
       ],
