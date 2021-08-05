@@ -26,6 +26,8 @@ class ProjectsView extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        key: const Key('createProject'),
+        heroTag: 'project',
         onPressed: () async {
           await Navigator.push(
             context,
@@ -89,6 +91,7 @@ class ProjectsView extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(height: 80),
         ],
       ),
     );

@@ -2,17 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whishlist/app/widgets/widgets.dart';
 import 'package:whishlist/l10n/l10n.dart';
-import 'package:whishlist/projects/projects.dart';
+import 'package:whishlist/tasks/tasks.dart';
 
-class CreateProjectView extends StatelessWidget {
-  const CreateProjectView({Key? key}) : super(key: key);
+class CreateTaskView extends StatelessWidget {
+  const CreateTaskView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
-    final bloc = context.read<CreateProjectBloc>();
+    final bloc = context.read<CreateTaskBloc>();
 
-    return BlocConsumer<CreateProjectBloc, CreateProjectState>(
+    return BlocConsumer<CreateTaskBloc, CreateTaskState>(
       listener: (context, state) {
         if (state.isDone) {
           Navigator.pop(context);
@@ -21,7 +21,7 @@ class CreateProjectView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           appBar: AppBar(
-            title: AppBarTitle(l10n.createProject),
+            title: AppBarTitle(l10n.createTask),
             leading: IconButton(
               onPressed: () => Navigator.pop(context),
               icon: const Icon(
@@ -37,7 +37,7 @@ class CreateProjectView extends StatelessWidget {
                 children: [
                   TextFormField(
                     decoration: InputDecoration(
-                      labelText: l10n.name,
+                      labelText: l10n.title,
                       floatingLabelBehavior: FloatingLabelBehavior.never,
                       labelStyle: const TextStyle(
                         color: Colors.black,
@@ -52,7 +52,7 @@ class CreateProjectView extends StatelessWidget {
                     autovalidateMode: AutovalidateMode.always,
                     onChanged: (value) {
                       bloc.add(
-                        CreateProjectEvent.nameChanged(value),
+                        CreateTaskEvent.titleChanged(value),
                       );
                     },
                   ),
@@ -69,21 +69,58 @@ class CreateProjectView extends StatelessWidget {
                     autovalidateMode: AutovalidateMode.always,
                     onChanged: (value) {
                       bloc.add(
-                        CreateProjectEvent.descriptionChanged(value),
+                        CreateTaskEvent.descriptionChanged(value),
                       );
                     },
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      const Spacer(),
+                      DateInput(
+                        onChange: (value) {
+                          bloc.add(
+                            CreateTaskEvent.dueDateChanged(value),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 8),
+                  Row(
+                    children: [
+                      ResolverInput(
+                        onChange: (value) {
+                          bloc.add(
+                            CreateTaskEvent.resolverChanged(value),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 4),
+                  Row(
+                    children: [
+                      TypeInput(
+                        onChange: (value) {
+                          bloc.add(
+                            CreateTaskEvent.typeChanged(value),
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
             ),
           ),
           floatingActionButton: FloatingActionButton(
-            key: const Key('submitProject'),
-            heroTag: 'project',
+            key: const Key('submitTask'),
+            heroTag: 'task',
             onPressed: state.isValid
                 ? () {
                     bloc.add(
-                      const CreateProjectEvent.submit(),
+                      const CreateTaskEvent.submit(),
                     );
                   }
                 : null,

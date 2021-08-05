@@ -36,7 +36,11 @@ class App extends StatelessWidget {
           return app(const HomePage());
         }
 
-        return app(const Loading());
+        return app(
+          const Scaffold(
+            body: Loading(),
+          ),
+        );
       },
     );
   }
