@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:whishlist/app/app_page_route.dart';
 import 'package:whishlist/app/dependencies/dependencies.dart';
-import 'package:whishlist/projects/bloc/projects_bloc.dart';
-import 'package:whishlist/projects/view/projects_view.dart';
+import 'package:whishlist/projects/projects.dart';
 
 class ProjectsPage extends StatelessWidget {
   const ProjectsPage({Key? key}) : super(key: key);

@@ -23,6 +23,7 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     yield* event.when(
       started: _started,
       delete: _delete,
+      update: _update,
     );
   }
 
@@ -38,6 +39,16 @@ class TasksBloc extends Bloc<TasksEvent, TasksState> {
     yield const _Loading();
 
     _repository.remove(id);
+
+    final tasks = _repository.getAll();
+
+    yield _Ready(tasks);
+  }
+
+  Stream<TasksState> _update(Task task) async* {
+    yield const _Loading();
+
+    _repository.put(task);
 
     final tasks = _repository.getAll();
 

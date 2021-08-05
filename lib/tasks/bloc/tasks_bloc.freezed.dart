@@ -25,6 +25,12 @@ class _$TasksEventTearOff {
       id,
     );
   }
+
+  _Update update(Task task) {
+    return _Update(
+      task,
+    );
+  }
 }
 
 /// @nodoc
@@ -36,12 +42,14 @@ mixin _$TasksEvent {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int id) delete,
+    required TResult Function(Task task) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int id)? delete,
+    TResult Function(Task task)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -49,12 +57,14 @@ mixin _$TasksEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Delete value) delete,
+    required TResult Function(_Update value) update,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Delete value)? delete,
+    TResult Function(_Update value)? update,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -115,6 +125,7 @@ class _$_Started implements _Started {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int id) delete,
+    required TResult Function(Task task) update,
   }) {
     return started();
   }
@@ -124,6 +135,7 @@ class _$_Started implements _Started {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int id)? delete,
+    TResult Function(Task task)? update,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -137,6 +149,7 @@ class _$_Started implements _Started {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Delete value) delete,
+    required TResult Function(_Update value) update,
   }) {
     return started(this);
   }
@@ -146,6 +159,7 @@ class _$_Started implements _Started {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Delete value)? delete,
+    TResult Function(_Update value)? update,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -223,6 +237,7 @@ class _$_Delete implements _Delete {
   TResult when<TResult extends Object?>({
     required TResult Function() started,
     required TResult Function(int id) delete,
+    required TResult Function(Task task) update,
   }) {
     return delete(id);
   }
@@ -232,6 +247,7 @@ class _$_Delete implements _Delete {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
     TResult Function(int id)? delete,
+    TResult Function(Task task)? update,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -245,6 +261,7 @@ class _$_Delete implements _Delete {
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
     required TResult Function(_Delete value) delete,
+    required TResult Function(_Update value) update,
   }) {
     return delete(this);
   }
@@ -254,6 +271,7 @@ class _$_Delete implements _Delete {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
     TResult Function(_Delete value)? delete,
+    TResult Function(_Update value)? update,
     required TResult orElse(),
   }) {
     if (delete != null) {
@@ -269,6 +287,122 @@ abstract class _Delete implements TasksEvent {
   int get id => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$DeleteCopyWith<_Delete> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UpdateCopyWith<$Res> {
+  factory _$UpdateCopyWith(_Update value, $Res Function(_Update) then) =
+      __$UpdateCopyWithImpl<$Res>;
+  $Res call({Task task});
+}
+
+/// @nodoc
+class __$UpdateCopyWithImpl<$Res> extends _$TasksEventCopyWithImpl<$Res>
+    implements _$UpdateCopyWith<$Res> {
+  __$UpdateCopyWithImpl(_Update _value, $Res Function(_Update) _then)
+      : super(_value, (v) => _then(v as _Update));
+
+  @override
+  _Update get _value => super._value as _Update;
+
+  @override
+  $Res call({
+    Object? task = freezed,
+  }) {
+    return _then(_Update(
+      task == freezed
+          ? _value.task
+          : task // ignore: cast_nullable_to_non_nullable
+              as Task,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Update implements _Update {
+  const _$_Update(this.task);
+
+  @override
+  final Task task;
+
+  @override
+  String toString() {
+    return 'TasksEvent.update(task: $task)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _Update &&
+            (identical(other.task, task) ||
+                const DeepCollectionEquality().equals(other.task, task)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(task);
+
+  @JsonKey(ignore: true)
+  @override
+  _$UpdateCopyWith<_Update> get copyWith =>
+      __$UpdateCopyWithImpl<_Update>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function(int id) delete,
+    required TResult Function(Task task) update,
+  }) {
+    return update(task);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function(int id)? delete,
+    TResult Function(Task task)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(task);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Delete value) delete,
+    required TResult Function(_Update value) update,
+  }) {
+    return update(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Delete value)? delete,
+    TResult Function(_Update value)? update,
+    required TResult orElse(),
+  }) {
+    if (update != null) {
+      return update(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Update implements TasksEvent {
+  const factory _Update(Task task) = _$_Update;
+
+  Task get task => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$UpdateCopyWith<_Update> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

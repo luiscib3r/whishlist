@@ -26,6 +26,14 @@ class Task {
   final project = ToOne<Project>();
 }
 
+const taskTypes = [
+  'ONAT',
+  'Inventario',
+  'Alquiler',
+  'Compra Producto',
+  'Transporte,'
+];
+
 mixin TaskType {
   static const onat = 0;
   static const inventario = 1;
@@ -40,3 +48,10 @@ mixin TaskState {
   static const enProceso = 2;
   static const cerrada = 3;
 }
+
+const taskStates = [
+  'Nueva',
+  'Abierta',
+  'En Proceso',
+  'Cerrada',
+];
